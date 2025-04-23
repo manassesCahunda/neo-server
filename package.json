@@ -9,7 +9,7 @@
     "watch:trigger": "pnpm dlx trigger.dev@latest dev",
     "watch:trigger": "pnpm dlx trigger.dev@latest dev",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
+    "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "@ai-sdk/google": "^1.2.9",
