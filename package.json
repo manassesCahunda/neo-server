@@ -7,8 +7,7 @@
     "watch:socket": "tsx watch --env-file .env src/server/socket.ts",
     "watch:trigger": "pnpm dlx trigger.dev@latest dev",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "build": "tsup-node"
+    "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "@ai-sdk/google": "^1.2.9",
@@ -61,7 +60,6 @@
     "@types/node": "22.13.0",
     "@types/ws": "^8.18.1",
     "drizzle-kit": "0.30.4",
-    "tsup": "8.3.6",
     "tsx": "4.19.2",
     "typescript": "5.7.3"
   },
