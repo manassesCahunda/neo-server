@@ -1,0 +1,131 @@
+@host = http://localhost:3333
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmNTY3OGJjMi1jZmRhLTRlM2UtYTVmOS03ZWRmYWYzNTQ1NWMiLCJlbWFpbCI6Im1hbmFzc2VzYmluZ2FAZ21haWwuY29tIiwiaWF0IjoxNzQzNjkwNDE2LCJleHAiOjE3NDQyOTUyMTZ9.zGu3PCBC13RA2-wm9lUBeTfdEZ95FrJTdL7tBBiW43Q
+
+@userId = 12c3d56b-ce6c-484c-8ca4-3e35d832b358
+
+
+### Create Session Auth Google
+GET {{host}}/auth/google
+
+
+
+
+### Connect Account WhatsApp
+GET {{host}}/auth/whatsapp
+Authorization: Bearer {{token}}
+
+
+
+### Create Database
+POST {{host}}/database
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id": "fa9768cb-8503-4583-8f2e-5f9c1481c091",
+  "permission": "all",
+  "type": "PostgreSQL",
+  "name": "bINGA",
+  "url": "postgresql://postgres.bhjzpmbvmdtranuqnvnw:wFoyTmPIxsM5uzTF@aws-0-eu-central-1.pooler.supabase.com:6543/postgres",
+  "userId": "{{userId}}"
+}
+
+
+
+### Select Database
+GET {{host}}/database
+Authorization: Bearer {{token}}
+
+
+
+### Update Database
+PUT {{host}}/database
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id": "fa9768cb-8503-4583-8f2e-5f9c1481c091",
+  "permission": "all",
+  "type": "PostgreSQL",
+  "name": "bINGA",
+  "url": "postgresql://postgres.bhjzpmbvmdtranuqnvnw:wFoyTmPIxsM5uzTF@aws-0-eu-central-1.pooler.supabase.com:6543/postgres",
+  "userId": "{{userId}}"
+}
+
+
+
+
+### Create Client
+POST {{host}}/client
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "userId": "{{userId}}",
+  "phone": "+1234567890",
+  "platform": "iOS",
+  "level": "BASIC",
+  "username": "exampleUser",
+  "email": "example@example.com",
+  "status": true
+}
+
+
+
+
+### Select Client
+GET {{host}}/client
+Authorization: Bearer {{token}}
+
+
+
+
+### Update Client
+PUT {{host}}/client
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "userId": "{{userId}}",
+  "phone": "+1234567890",
+  "platform": "Android",
+  "level": "PREMIUM",
+  "username": "updatedUser",
+  "email": "updated@example.com",
+  "status": false
+}
+
+
+
+
+### Create AI Entry
+POST {{host}}/ai
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "userId": "{{userId}}",
+  "prompt": "Generate a new response",
+  "system": "GPT-4",
+  "data": {}
+}
+
+
+
+### Select AI Entry
+GET {{host}}/ai
+Authorization: Bearer {{token}}
+
+
+
+### Update AI Entry
+PUT {{host}}/ai
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "userId": "{{userId}}",
+  "prompt": "Update response",
+  "system": "GPT-4",
+  "data": {}
+}
