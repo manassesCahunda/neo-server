@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "pnpm run /^watch:.*/",
+    "start": "pnpm run /^watch:.*/",
     "watch:server": "tsx watch --env-file .env src/server/server.ts",
     "watch:socket": "tsx watch --env-file .env src/server/socket.ts",
     "watch:trigger": "pnpm dlx trigger.dev@latest dev",
