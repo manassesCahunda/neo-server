@@ -16,7 +16,7 @@ Servidor rápido e escalável, utilizando Bailey *edge*, WebSocket para múltipl
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/neo-server.git
+   git clone git@github.com:manassesCahunda/neo-server.git
    cd neo-server
    ```
 
