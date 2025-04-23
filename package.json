@@ -2,16 +2,18 @@
   "name": "backend",
   "version": "0.0.0",
   "scripts": {
-    "dev": "pnpm run /^watch:.*/",
-    "start": "pnpm run /^watch:.*/",
-    "watch:server": "tsx watch --env-file .env src/server/server.ts",
-    "watch:socket": "tsx watch --env-file .env src/server/socket.ts",
+    "dev": "pnpm run watch:server & pnpm run watch:socket & pnpm run watch:trigger",
+    "start": "pnpm run watch:server & pnpm run watch:socket & pnpm run watch:trigger",
+    "watch:server": "tsx  --env-file  src/server/server.ts",
+    "watch:socket": "tsx  --env-file  src/server/socket.ts",
+    "watch:trigger": "pnpm dlx trigger.dev@latest dev",
     "watch:trigger": "pnpm dlx trigger.dev@latest dev",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate"
+    "db:migrate": "drizzle-kit migrate",
   },
   "dependencies": {
     "@ai-sdk/google": "^1.2.9",
+     "concurrently": "^9.1.2",
     "@ai-sdk/openai": "^1.3.16",
     "@fastify/cookie": "^11.0.2",
     "@fastify/cors": "10.0.2",
