@@ -186,4 +186,7 @@ function broadcast(session: string, type: ServerMessage['type'], data: any) {
   console.log(`[${session}] BROADCAST ${type.toUpperCase()}`);
 }
 
-server.listen(PORT, () => console.log(`[WS] LISTENING ON PORT ${PORT}`));
+server.listen({ port: PORT, host: '0.0.0.0' }, () => {
+  console.log(`[WS] LISTENING ON PORT ${PORT}`);
+});
+
