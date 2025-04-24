@@ -88,7 +88,7 @@ type ServerMessage =
       connectWebSocket(session);
     }
     
-    await app.listen({ port: env.PORT });
+    await app.listen({ port: env.PORT, host: '0.0.0.0' });
     app.log.info(` HTTP SERVER RUNNING ON PORT ${env.PORT}`);
   } catch (err) {
     console.error('\n ERROR STARTING SERVER:', err);
