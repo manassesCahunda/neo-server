@@ -66,10 +66,9 @@ type ServerMessage =
       
        wsClient.on('message', async (raw) => {
          const messages: any = JSON.parse(raw.toString());
-         if (messages?.type === "messages") {
-            const send = await generateMessage.trigger(messages?.data);
-            if (!send) console.error('\n ERROR SENDING MESSAGE:', send);
-            console.log('MESSAGE SENT:', send);
+         if (messages?.type === "messages") {       
+             const send = await generateMessage.trigger(messages?.data);
+             console.log('MESSAGE SENT:', send);
          }
        });
     
