@@ -96,6 +96,7 @@ function setupBaileysListeners(sock: WASocket, session: string, saveCreds: () =>
         console.error(`[${session}] STREAM MESSAGES ERROR`, e);
         return [];
       });
+      console.log(`[${session}] MESSAGES ALL`,JSON.stringify(msgs, null, 2));
       broadcast(session, 'all', msgs);
       console.log(`[${session}] CONNECTION OPEN`);
     }
@@ -131,6 +132,7 @@ function setupBaileysListeners(sock: WASocket, session: string, saveCreds: () =>
         console.error(`[${session}] STREAM MESSAGES ERROR`, e);
         return [];
       });
+      console.log(`[${session}] MESSAGES ALL`,JSON.stringify(history, null, 2));
       broadcast(session, 'all', history);
 
       const remoteJid = msg.key.remoteJid;
@@ -141,15 +143,25 @@ function setupBaileysListeners(sock: WASocket, session: string, saveCreds: () =>
 
       const text = msg.message?.conversation || msg.message?.extendedTextMessage?.text;
       if (!text) continue;
+      
+      const messageId = msg?.key?.id;
+    
+
+      if (!remoteJid || !messageId) continue;
+    
+      const role = msg.key.fromMe ? 'assistent' : 'user';
 
       const messageData = {
-        id: msg.key.id,
+        id: messageId,
         remoteJid,
         name: msg.pushName,
-        fromMe: msg.key.fromMe,
+        from: msg.key.fromMe,
+        role,
+        rating: null,
         timestamp: msg.messageTimestamp,
-        content: msg.message,
+        message: text,
       };
+
       const hashKey = `wa:history:${session}:${remoteJid}`;
       const pipeline = redis.pipeline();
       pipeline.hsetnx(hashKey, messageData.id, JSON.stringify(messageData));
@@ -243,13 +255,6 @@ wss.on('connection', async (ws, req) => {
   const qr = lastQrs.get(session);
   ws.send(JSON.stringify({ type: 'connection', data: Boolean(sock?.ws?.isOpen && !qr) }));
   if (qr) ws.send(JSON.stringify({ type: 'qr', data: qr }));
-
-
-  const history = await streamMessages({ session }).catch(e => {
-    console.error(`[${session}] STREAM MESSAGES ERROR`, e);
-    return [];
-  });
-  broadcast(session, 'all', history);
 
 
   if (remotejid && raw) {
