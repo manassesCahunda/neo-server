@@ -4,7 +4,7 @@
   "scripts": {
     "dev:parallel": "pnpm run /^watch:.*/",
     "watch:server": "tsx -r dotenv/config src/server/server.ts",
-    "watch:socket": "tsx -r dotenv/config src/server/socket.ts"
+    "watch:socket": "tsx -r dotenv/config src/server/socket.ts",
     "watch:trigger": "pnpm dlx trigger.dev@latest dev",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
