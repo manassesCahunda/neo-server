@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev:parallel": "pnpm run /^watch:.*/",
-    "watch:server": "tsx watch src/server/server.ts",
-    "watch:socket": "tsx watch src/server/socket.ts",
+    "watch:server": "tsx  src/server/server.ts",
+    "watch:socket": "tsx  src/server/socket.ts",
     "watch:trigger": "pnpm dlx trigger.dev@latest dev",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
