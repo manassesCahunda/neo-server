@@ -1,3 +1,5 @@
+(global as any).crypto = require('crypto');
+
 import http from 'http';
 import WebSocket, { WebSocketServer } from 'ws';
 import url from 'url';
