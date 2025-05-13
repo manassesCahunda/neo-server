@@ -15,7 +15,7 @@ const envSchema = z.object({
   SESSION_SECRET: z.string(),
   JWT_SECRET: z.string(),
   SOCKET_PORT: z.string(),
-  SOCKET_HOST: z.string(),
+  SOCKET_HOST: z.string().default("localhost"),
   OPENAI_API_KEY: z.string(),
   AI_DEFAULT_MODEL: z.string().default("gemini-1.5-flash"),
 })
