@@ -390,10 +390,10 @@ export const generateMessage = task({
            "${json.externalActionRequired.message}"\n +
            ━━━━━━━━━━━━━━━━━━━━━━━`;
 
-        //  await sendWebSocketMessage(`ws:localhost:${process.env.SOCKET_PORT}/?session=${userId}&remotejid=${encodeURIComponent(`244925070708@whatsapp.net`)}&message=${encodeURIComponent(forwardedMessage)}`);
+         await sendWebSocketMessage(`ws:${process.env.SOCKET_HOST}:${process.env.SOCKET_PORT}/?session=${userId}&remotejid=${encodeURIComponent(`${phone}@s.whatsapp.net`)}&message=${encodeURIComponent(forwardedMessage)}`);
        }
 
-      //  if (json?.answer) await sendWebSocketMessage(`ws:localhost:${process.env.SOCKET_PORT}/?session=${userId}&remotejid=${encodeURIComponent(remoteJid)}&message=${encodeURIComponent(json.answer)}`);
+       if (json?.answer) await sendWebSocketMessage(`ws:${process.env.SOCKET_HOST}:${process.env.SOCKET_PORT}/?session=${userId}&remotejid=${encodeURIComponent(remoteJid)}&message=${encodeURIComponent(json.answer)}`);
        
 
       return text;
