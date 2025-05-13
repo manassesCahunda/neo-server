@@ -61,7 +61,7 @@ type ServerMessage =
 
     app.log.info(`SESSIONS FOUND: ${sessions.join(', ')}`);
     async function connectWebSocket(session: string) {
-      const wsClient = new WebSocket(`ws:localhost:${process.env.SOCKET_PORT}/?session=${session}`);
+      const wsClient = new WebSocket(`ws:${process.env.SOCKET_HOST}:${process.env.SOCKET_PORT}/?session=${session}`);
       
        wsClient.on('message', async (raw) => {
          const messages: any = JSON.parse(raw.toString());
