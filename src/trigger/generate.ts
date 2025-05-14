@@ -132,7 +132,10 @@ export const generateMessage = task({
         5. SE FOR UMA SOLICITAÇÃO FORA DO ESCOPO:
            • NEGAR EDUCAMENTE
            • DEFINIR: externalActionRequired.action = true
-           • RETORNAR MENSAGEM: "Recebemos: '*{{mensagem_original_do_cliente}}*' e encaminhamos ao setor responsável."
+          • NÃO ENVIAR ESSA MENSAGEM AO CLIENTE.
+          • ESSA FRASE ("Recebemos: '*{{mensagem_original_do_cliente}}*' e encaminhamos ao setor responsável.") DEVE FICAR APENAS EM externalActionRequired.message, **NUNCA** na propriedade answer.
+          • O campo answer deve conter apenas uma resposta educada e neutra como: "Recebemos sua solicitação e ela será analisada pela nossa equipe. Em breve retornaremos com mais informações."
+
         
         HORÁRIOS DE TRABALHO (BASE):
         • Extraído de: ${company[0].prompt}
