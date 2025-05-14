@@ -18,7 +18,7 @@ export type AppointmentMessage = {
   details: string;
 };
 
-export const selectAppointments = async ({
+export const select = async ({
   userId,
 }: {
   userId: string;
