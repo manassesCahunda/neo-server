@@ -1,3 +1,5 @@
+import WebSocket, { WebSocketServer } from 'ws';
+
 export  async function sendWebSocketMessage(url: string) {
   return new Promise<void>((resolve, reject) => {
     const ws = new WebSocket(url);
