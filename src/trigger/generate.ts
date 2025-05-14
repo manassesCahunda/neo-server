@@ -181,7 +181,7 @@ export const generateMessage = task({
        SE NÃO ESTIVER CLARO, DEFINIR: "conversation": null
        MODELO DE RESPOSTA OBRIGATÓRIO:
         {
-          "answer": "mensagem clara, objetiva e educada sempre mensagem para cliente",
+          "answer": "mensagem clara, objetiva e educada sempre mensagem para cliente SEMPRE MENSAGEM PARA CLIENTE NUNCA MENSAGEM encaminhamos",
           "conversation": true | null,
           "externalActionRequired": {
             "action": true | false,
