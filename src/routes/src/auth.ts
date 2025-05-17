@@ -99,11 +99,7 @@ export const authRoutes: FastifyPluginAsyncZod = async (app) => {
 
         userData = {
           id: insertedUser[0].id,
-          avatar: insertedUser[0].avatar || "",
-          type: insertedUser[0].type || "",
-          email: insertedUser[0].email || "",
-          name: insertedUser[0].name || "",
-          prompt: insertedUser[0].prompt || "",
+          email: insertedUser[0].email || ""
         };
       }
 
