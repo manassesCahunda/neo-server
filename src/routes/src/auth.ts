@@ -115,12 +115,7 @@ export const authRoutes: FastifyPluginAsyncZod = async (app) => {
         );
 
 
-      return reply
-          .setCookie("token", appToken, {
-            path: "/",
-            maxAge: 60 * 60 * 24 * 7
-          })
-          .redirect(`${process.env.WEB_URL}/api/auth/callback`);
+      return reply.redirect(`${process.env.WEB_URL}/api/auth/callback?token=${appToken}`);
 
     } catch (error) {
       return reply.status(500).send({
