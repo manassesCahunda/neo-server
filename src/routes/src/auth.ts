@@ -74,13 +74,12 @@ export const authRoutes: FastifyPluginAsyncZod = async (app) => {
           .execute();
 
         userData = {
-          id: userUpdate[0].id,
-          avatar: userUpdate[0].avatar || "",
-          type: userUpdate[0].type || "",
-          email: userUpdate[0].email || "",
-          name: userUpdate[0].name || "",
-          prompt: userUpdate[0].prompt || "",
+          id: insertedUser[0].id,
+          avatar: insertedUser[0].avatar || "",
+          email: insertedUser[0].email || "",
+          name: insertedUser[0].name || "",
         };
+        
       } else {
         const insertedUser = await db
           .insert(user)
@@ -98,10 +97,10 @@ export const authRoutes: FastifyPluginAsyncZod = async (app) => {
           .execute();
 
         userData = {
-          id: userUpdate[0].id,
-          avatar: userUpdate[0].avatar || "",
-          email: userUpdate[0].email || "",
-          name: userUpdate[0].name || "",
+          id: insertedUser[0].id,
+          avatar: insertedUser[0].avatar || "",
+          email: insertedUser[0].email || "",
+          name: insertedUser[0].name || "",
         };
         
       }
