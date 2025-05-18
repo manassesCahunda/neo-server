@@ -107,14 +107,24 @@ export const authRoutes: FastifyPluginAsyncZod = async (app) => {
           .status(500)
           .send({ error: "JWT SECRET NOT SET IN ENVIRONMENT VARIABLES" });
       }
+        
+        const appToken = jwt.sign(
+          { userId: userData.id },
+          process.env.JWT_SECRET,
+          { expiresIn: "7d" }
+        );
 
-      const appToken = jwt.sign(
-        { user: userData },
-        process.env.JWT_SECRET,
-        { expiresIn: "7d" }
-      );
 
-      return reply.redirect(`${process.env.WEB_URL}/api/auth/callback?token=${appToken}`);
+      return reply
+          .setCookie("token", appToken, {
+            path: "/",
+            httpOnly: true,
+            secure: true,
+            sameSite: "lax",
+            maxAge: 60 * 60 * 24 * 7, // 7 dias
+          })
+          .redirect(`${process.env.WEB_URL}/chat`);
+
     } catch (error) {
       return reply.status(500).send({
         error: "GOOGLE AUTHENTICATION ERROR",
