@@ -98,8 +98,12 @@ export const authRoutes: FastifyPluginAsyncZod = async (app) => {
           .execute();
 
         userData = {
-          id: insertedUser[0].id
+          id: userUpdate[0].id,
+          avatar: userUpdate[0].avatar || "",
+          email: userUpdate[0].email || "",
+          name: userUpdate[0].name || "",
         };
+        
       }
 
       if (!process.env.JWT_SECRET) {
@@ -109,7 +113,7 @@ export const authRoutes: FastifyPluginAsyncZod = async (app) => {
       }
         
         const appToken = jwt.sign(
-          { userId: userData.id },
+          { userId: userData },
           process.env.JWT_SECRET,
           { expiresIn: "7d" }
         );
